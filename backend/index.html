@@ -1,0 +1,237 @@
+<html><head><style>
+
+pre,
+code {
+  font-family: Menlo, Monaco, "Courier New", monospace;
+}
+
+pre {
+  padding: .5rem;
+  line-height: 1.25;
+  overflow-x: scroll;
+}
+
+@media print {
+  *,
+  *:before,
+  *:after {
+    background: transparent !important;
+    color: #000 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
+
+  abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+
+  a[href^="#"]:after,
+  a[href^="javascript:"]:after {
+    content: "";
+  }
+
+  pre,
+  blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+
+  thead {
+    display: table-header-group;
+  }
+
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+
+  img {
+    max-width: 100% !important;
+  }
+
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+}
+
+a,
+a:visited {
+  color: #01ff70;
+}
+
+a:hover,
+a:focus,
+a:active {
+  color: #2ecc40;
+}
+
+.retro-no-decoration {
+  text-decoration: none;
+}
+
+html {
+  font-size: 12px;
+}
+
+@media screen and (min-width: 32rem) and (max-width: 48rem) {
+  html {
+    font-size: 15px;
+  }
+}
+
+@media screen and (min-width: 48rem) {
+  html {
+    font-size: 16px;
+  }
+}
+
+body {
+  line-height: 1.85;
+}
+
+p,
+.retro-p {
+  font-size: 1rem;
+  margin-bottom: 1.3rem;
+}
+
+h1,
+.retro-h1,
+h2,
+.retro-h2,
+h3,
+.retro-h3,
+h4,
+.retro-h4 {
+  margin: 1.414rem 0 .5rem;
+  font-weight: inherit;
+  line-height: 1.42;
+}
+
+h1,
+.retro-h1 {
+  margin-top: 0;
+  font-size: 3.998rem;
+}
+
+h2,
+.retro-h2 {
+  font-size: 2.827rem;
+}
+
+h3,
+.retro-h3 {
+  font-size: 1.999rem;
+}
+
+h4,
+.retro-h4 {
+  font-size: 1.414rem;
+}
+
+h5,
+.retro-h5 {
+  font-size: 1.121rem;
+}
+
+h6,
+.retro-h6 {
+  font-size: .88rem;
+}
+
+small,
+.retro-small {
+  font-size: .707em;
+}
+
+/* https://github.com/mrmrs/fluidity */
+
+img,
+canvas,
+iframe,
+video,
+svg,
+select,
+textarea {
+  max-width: 100%;
+}
+
+html,
+body {
+  background-color: #222;
+  min-height: 100%;
+}
+
+html {
+  font-size: 18px;
+}
+
+body {
+  color: #fafafa;
+  font-family: "Courier New";
+  line-height: 1.45;
+  margin: 6rem auto 1rem;
+  max-width: 48rem;
+  padding: .25rem;
+}
+
+pre {
+  background-color: #333;
+}
+
+blockquote {
+  border-left: 3px solid #01ff70;
+  padding-left: 1rem;
+}</style></head><body><h1 id="trie-docs">Trie Docs</h1>
+<h2 id="server">Server</h2>
+<p>To run the server simply install <em>flask</em>, you can do this by running <code>pip install flask</code>.
+After installing flask open the directory the server is located in and run it using <code>python server.py</code>.</p>
+<p>This will run the server on localhost on port 5000.</p>
+<h2 id="client">Client</h2>
+<p>To run the client first install the requirements <code>pip install -r requirements.txt</code>
+After this run <code>python client.py</code>. The client is built in a very easy to use way that asks for what you want to do in a forever loop. This allows you to issue multiple instructions without rerunning the client script.</p>
+<h2 id="api-docs">Api Docs</h2>
+<p>All api endpoints on this program can be used by simple <strong>get</strong> requests.</p>
+<h4 id="this-page">This Page</h4>
+<p><code>https://trieapi.harjyotsahni.com/</code></p>
+<h4 id="adding-a-word">Adding a Word</h4>
+<p><code>https://trieapi.harjyotsahni.com/add/&lt;word&gt;</code>
+The api accepts all lowercase alpha words.
+The api will return errors in index <code>Error</code> and this can be used for other clients and error handling.</p>
+<h4 id="removing-a-word">Removing a Word</h4>
+<p><code>https://trieapi.harjyotsahni.com/remove/&lt;word&gt;</code>
+The api will remove the word that you enter if it is in the trie.
+The api will return errors in index <code>Error</code> and this can be used for other clients and error handling.</p>
+<h4 id="searching-for-a-word">Searching for a Word</h4>
+<p><code>https://trieapi.harjyotsahni.com/search/&lt;word&gt;</code>
+The api will seach for a word. The api will then return a true or false boolean.</p>
+<h4 id="prefix-searches">Prefix Searches</h4>
+<p><code>https://trieapi.harjyotsahni.com/suggest/&lt;word&gt;</code>
+The api will search for words starting with the prefix you provide and return them in the form of a list.</p>
+<h4 id="structure">Structure</h4>
+<p><code>https://trieapi.harjyotsahni.com/struct</code>
+The api will return the structure of the trie in a dictionary that clearly shows the links between parents and children.</p>
+<h4 id="words">Words</h4>
+<p><code>https://trieapi.harjyotsahni.com/words</code>
+The api will return all the words in the trie stored in a list.</p>
+<h4 id="clear">Clear</h4>
+<p><code>https://trieapi.harjyotsahni.com/clear</code>
+The api will clear out all the contents of the trie.</p>
+</body></html>
